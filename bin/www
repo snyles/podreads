@@ -34,8 +34,8 @@ app.set("port", port);
   const homedir = require('os').homedir();
 
   const options = {
-    key: fs.readFileSync(`${homedir}/certs/localhost/localhost.key`),
-    cert: fs.readFileSync(`${homedir}/certs/localhost/localhost.crt`)
+    key: fs.readFileSync(`${homedir}/.certs/localhost/localhost.key`),
+    cert: fs.readFileSync(`${homedir}/.certs/localhost/localhost.crt`)
   };
 
   server = https.createServer(options, app)

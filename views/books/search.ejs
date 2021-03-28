@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+
+<form action="/books/search">
+<input type="text" name=q value="<%= query %>">
+<input type="submit" value="Search">
+</form>
+
+<% results.forEach(book => { %>
+
+<p>Title: <%= book.volumeInfo.title %> </p>
+<p>Author: <%= book.volumeInfo.authors.join(", ") %> </p>
+
+<% }) %>
+
+<%- include('../partials/footer') %>
