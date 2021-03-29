@@ -1,16 +1,54 @@
 <%- include('../partials/header') %>
 
 
-<form action="/books/search">
-<input type="text" name=q value="<%= query %>">
-<input type="submit" value="Search">
-</form>
+<div class=searchForm>
+  <form action="/books/search">
+    <h2>Book Search</h3>
+    <label for="intitle">Title:</label>
+    <input type="text" name="intitle" value="<%= qTitle %>"><br><br>
+    <label for="inauthor">Author:</label>
+    <input type="text" name="inauthor" value="<%= qAuthor %>"><br><br>
+    <input type="submit" value="Search">
+  </form>
+</div>
+
+<% if(results) { %>
+
+<div id="searchResults">
 
 <% results.forEach(book => { %>
+    <div class="bookcard">
+      <form action="/books" method="post">
+      <% if (book.volumeInfo.imageLinks) { %>
+      <img src="<%= book.volumeInfo.imageLinks.thumbnail %>"" alt="<%= book.volumeInfo.title %>">
+      <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
+      <% } %>
 
-<p>Title: <%= book.volumeInfo.title %> </p>
-<p>Author: <%= book.volumeInfo.authors.join(", ") %> </p>
+      <% if (book.volumeInfo.title) { %>
+      <p>Title: <%= book.volumeInfo.title %> </p>
+      <input type="text" hidden name="title" value="<%= book.volumeInfo.title %>">
+      <% } %>
 
+      <% if (book.volumeInfo.authors) { %>
+      <p>Author: <%= book.volumeInfo.authors[0] %> </p>
+      <input type="text" hidden name="author" value="<%= book.volumeInfo.authors[0] %>">
+      <% } %>
+
+      <% if (book.volumeInfo.publishedDate) { %>
+        <p>Published: <%= book.volumeInfo.publishedDate.toLocaleString() %> </p>
+        <input type="text" hidden name="published" value="<%= book.volumeInfo.publishedDate.toLocaleString() %>">
+      <% } %>
+      <input type="text" name="googleId" hidden value="<%= book.id %>">
+      
+      <input type="text" name="qTitle" hidden value=<%= qTitle %>>
+      <input type="text" name="qAuthor" hidden value=<%= qAuthor %>>
+
+      <input type="submit" value="Add Book">
+      </form>
+    </div>
 <% }) %>
+
+  </div>
+<% } %>
 
 <%- include('../partials/footer') %>
