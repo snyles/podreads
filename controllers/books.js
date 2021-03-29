@@ -3,44 +3,32 @@ const mongoose = require('mongoose');
 
 const Book = require('../models/book');
 const User = require('../models/user');
+const Booklist = require('../models/booklist')
 
 module.exports = {
   search,
-  index,
   addToBooklist
 }
 
-function index(req,res) {
-  req.user
-  .populate('books').exec((err, booklists))
-}
-
-
-//   Book.find( { collectedBy: req.user._id })
-//   .then(books => {
-//     res.render('books/index', {
-//       title: 'My Books',
-//       user: req.user,
-//       books
-//     })
-//   })
-// }
-
 function search(req, res) {
   const q = req.query.intitle + req.query.inauthor;
-
   if (q) {
     const searchUrl='https://www.googleapis.com/books/v1/volumes?q=';
     axios.get(searchUrl+q)
     .then(response => {
       // console.log(response.data.items[0].volumeInfo.title);
-      res.render('books/search', {
-        title: "Search for Books",
-        user: req.user,
-        results: response.data.items,
 
-        qTitle: req.query.intitle,
-        qAuthor: req.query.inauthor,
+      User.findById(req.user._id)
+      .populate('booklists').exec((error, u) => {
+        res.render('books/search', {
+          title: "Search for Books",
+          user: req.user,
+          results: response.data.items,
+          
+          qTitle: req.query.intitle,
+          qAuthor: req.query.inauthor,
+          booklists: u.booklists,
+        })
       })
     })
     .catch (error => {
@@ -54,27 +42,44 @@ function search(req, res) {
       query: null,
       qTitle: null,
       qAuthor: null,
+      booklists: null,
       user: req.user,
       title: "Search for Books",
+
     })
   }
 }
 
 function addToBooklist(req, res) {
-  req.body.collectedBy = req.user._id;
-  Book.findOne({ googleId: req.body.googleId})
-  .then(book => {
-    if(book) {
-      book.collectedBy.push(req.user._id);
-      book.save()
-    } else {
-      Book.create(req.body)
-    }
-  req.user.booklists[0].books.push(book)
-  req.user.save()
-    .then( () => {
-      const q = `intitle=${req.body.qTitle}&inauthor=${req.body.qAuthor}`
-      res.redirect(`/books/search?${q}`)
-   })
+  Booklist.findById(req.body.booklistSelect)
+  .then(booklist => {
+    Book.findOne({ googleId: req.body.googleId})
+    .then(book => {
+      if(book) {
+        if (!book.collectedBy.includes(req.user._id)) {
+          book.collectedBy.push(req.user._id);
+        }
+        book.save()
+        booklist.books.push(book._id)
+        booklist.save()
+        .then( () => {
+          // const q = `intitle=${req.body.qTitle}&inauthor=${req.body.qAuthor}`
+          // res.redirect(`/books/?${q}`)
+          res.redirect('/booklists')
+        })
+      } else {
+        req.body.collectedBy = req.user._id;
+        Book.create(req.body)
+        .then(book => {
+          booklist.books.push(book._id)
+          booklist.save()
+          .then( () => {
+            // const q = `intitle=${req.body.qTitle}&inauthor=${req.body.qAuthor}`
+            // res.redirect(`/books/?${q}`)
+            res.redirect('/booklists')
+          })
+        })
+      }
+    })
   })
 }

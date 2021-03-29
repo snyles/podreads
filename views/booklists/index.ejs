@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 
-<% user.booklists.forEach(booklist => { %>
+<% booklists.forEach(booklist => { %>
   <h2><%= booklist.name %></h2>
 
   <% booklist.books.forEach(book => { %>
@@ -20,7 +20,7 @@
       <% } %>
 
       <% if (book.published) { %>
-        <p>Published: <%= book.volumeInfo.publishedDate.toLocaleString() %> </p>
+        <p>Published: <%= book.published.getFullYear() %> </p>
       <% } %>
 
       <input type="text" name="googleId" hidden value="<%= book.googleId %>">

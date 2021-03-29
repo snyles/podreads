@@ -2,7 +2,7 @@
 
 
 <div class=searchForm>
-  <form action="/books/search">
+  <form action="/books">
     <h2>Book Search</h3>
     <label for="intitle">Title:</label>
     <input type="text" name="intitle" value="<%= qTitle %>"><br><br>
@@ -30,8 +30,8 @@
       <% } %>
 
       <% if (book.volumeInfo.authors) { %>
-      <p>Author: <%= book.volumeInfo.authors[0] %> </p>
-      <input type="text" hidden name="author" value="<%= book.volumeInfo.authors[0] %>">
+      <p>Author: <%= book.volumeInfo.authors.join(', ') %> </p>
+      <input type="text" hidden name="author" value="<%= book.volumeInfo.authors.join(', ') %>">
       <% } %>
 
       <% if (book.volumeInfo.publishedDate) { %>
@@ -43,6 +43,11 @@
       <input type="text" name="qTitle" hidden value="<%= qTitle %>">
       <input type="text" name="qAuthor" hidden value="<%= qAuthor %>">
 
+      <select name="booklistSelect">
+        <% booklists.forEach( booklist => { %>
+          <option value="<%= booklist._id %>"><%= booklist.name %></option>
+        <% }) %>
+      </select>
       <input type="submit" value="Add Book">
       </form>
     </div>

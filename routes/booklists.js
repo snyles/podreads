@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const booksCtrl = require('../controllers/books');
+const booklistsCtrl = require('../controllers/booklists');
 
-router.get('/', isLoggedIn, booksCtrl.search);
-router.post('/', isLoggedIn, booksCtrl.addToBooklist);
-
+router.get('/', isLoggedIn, booklistsCtrl.index);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
