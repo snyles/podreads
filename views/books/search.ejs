@@ -38,8 +38,14 @@
         <p>Published: <%= book.volumeInfo.publishedDate %> </p>
         <input type="text" hidden name="published" value="<%= book.volumeInfo.publishedDate.toLocaleString() %>">
       <% } %>
+
+      <% if (book.volumeInfo.description) { %>
+        <% let desc = book.volumeInfo.description.split('.').slice(0,1).join('.') + '...'; %>
+        <p>Description: <%= desc %> </p>
+        <input type="text" hidden name="description" value="<%= desc %>">
+      <% } %>
+
       <input type="text" name="googleId" hidden value="<%= book.id %>">
-      
       <input type="text" name="qTitle" hidden value="<%= qTitle %>">
       <input type="text" name="qAuthor" hidden value="<%= qAuthor %>">
 

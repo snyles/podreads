@@ -8,6 +8,7 @@ const bookSchema = new Schema(
     published: Date,
     thumbnail: String,
     googleId: String,
+    description: String,
     collectedBy: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   {

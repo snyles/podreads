@@ -7,21 +7,21 @@
     <% if (book.thumbnail) { %>
     <img src="<%= book.thumbnail %>"" alt="<%= book.title %>">
     <% } %>
-
     <% if (book.title) { %>
     <p><%= book.title %> </p>
     <% } %>
-
     <% if (book.author) { %>
     <p>by <%= book.author %> </p>
     <% } %>
-
     <% if (book.published) { %>
       <p>Published: <%= book.published.getFullYear() %> </p>
     <% } %>
+    <% if (book.description) { %>
+      <p>Description: <%= book.description %> </p>
+    <% } %>
     <form action="/books/<%= book._id %>?_method=DELETE" method="post">
     <input type="text" name="booklistId" hidden value="<%= booklist._id %>">
-    <button type="submit" value="Remove Book">
+    <button type="submit">Remove Book</button>
     </form>
   </div>
 <% }) %>

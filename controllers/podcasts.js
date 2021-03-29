@@ -16,10 +16,10 @@ function search(req,res) {
     const apiUrl = `https://listen-api.listennotes.com/api/v2/search?q=${q}`;
     axios.get(apiUrl, options)
     .then(response => {
-      console.log(response.data.results[0].podcast.title_original)
+      // console.log(response.data.results)
       res.render('podcasts/search', {
         title: 'Podcast Search',
-        results: response,
+        results: response.data.results,
         user: req.user
       })
     })
