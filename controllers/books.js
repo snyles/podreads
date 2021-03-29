@@ -7,7 +7,8 @@ const Booklist = require('../models/booklist')
 
 module.exports = {
   search,
-  addToBooklist
+  addToBooklist,
+  removeFromBooklist,
 }
 
 function search(req, res) {
@@ -17,7 +18,6 @@ function search(req, res) {
     axios.get(searchUrl+q)
     .then(response => {
       // console.log(response.data.items[0].volumeInfo.title);
-
       User.findById(req.user._id)
       .populate('booklists').exec((error, u) => {
         res.render('books/search', {
@@ -45,7 +45,6 @@ function search(req, res) {
       booklists: null,
       user: req.user,
       title: "Search for Books",
-
     })
   }
 }
@@ -81,5 +80,16 @@ function addToBooklist(req, res) {
         })
       }
     })
+  })
+}
+
+function removeFromBooklist(req,res) {
+  Booklist.findById(req.body.booklistId)
+  .then(booklist => {
+    const idx = booklist.books.indexOf(req.params.id);
+    booklist.books.splice(idx, 1)
+    booklist.save()
+    .then(
+      res.redirect('/booklists'))
   })
 }

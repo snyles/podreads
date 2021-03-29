@@ -2,29 +2,29 @@
 
 
 <% booklists.forEach(booklist => { %>
-  <h2><%= booklist.name %></h2>
+  <h2><a href="/booklists/<%= booklist._id %>">
+    <%= booklist.name %>
+  </a></h2>
 
   <% booklist.books.forEach(book => { %>
     <div class="bookcard">
-      <form action="/books/<%= book._id %>?_method=DELETE" method="post">
       <% if (book.thumbnail) { %>
       <img src="<%= book.thumbnail %>"" alt="<%= book.title %>">
       <% } %>
 
       <% if (book.title) { %>
-      <p>Title: <%= book.title %> </p>
+      <p><%= book.title %> </p>
       <% } %>
 
       <% if (book.author) { %>
-      <p>Author: <%= book.author %> </p>
+      <p>by <%= book.author %> </p>
       <% } %>
 
       <% if (book.published) { %>
         <p>Published: <%= book.published.getFullYear() %> </p>
       <% } %>
-
-      <input type="text" name="googleId" hidden value="<%= book.googleId %>">
-      
+      <form action="/books/<%= book._id %>?_method=DELETE" method="post">
+      <input type="text" name="booklistId" hidden value="<%= booklist._id %>">
       <input type="submit" value="Remove Book">
       </form>
     </div>

@@ -5,6 +5,7 @@ const booksCtrl = require('../controllers/books');
 
 router.get('/', isLoggedIn, booksCtrl.search);
 router.post('/', isLoggedIn, booksCtrl.addToBooklist);
+router.delete('/:id', isLoggedIn, booksCtrl.removeFromBooklist);
 
 
 function isLoggedIn(req, res, next) {

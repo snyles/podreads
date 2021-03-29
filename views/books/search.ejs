@@ -35,7 +35,7 @@
       <% } %>
 
       <% if (book.volumeInfo.publishedDate) { %>
-        <p>Published: <%= book.volumeInfo.publishedDate.toLocaleString() %> </p>
+        <p>Published: <%= book.volumeInfo.publishedDate %> </p>
         <input type="text" hidden name="published" value="<%= book.volumeInfo.publishedDate.toLocaleString() %>">
       <% } %>
       <input type="text" name="googleId" hidden value="<%= book.id %>">
