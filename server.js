@@ -23,6 +23,7 @@ const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const booksRouter = require("./routes/books");
 const booklistsRouter = require("./routes/booklists");
+const podcastsRouter = require("./routes/podcasts");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -56,6 +57,7 @@ app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/books", booksRouter);
 app.use("/booklists", booklistsRouter);
+app.use("/podcasts", podcastsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

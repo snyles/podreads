@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+
+
+<div class='searchForm'>
+  <form action="/podcasts/search" method="PUT">
+    <h2><%= title %></h2>
+    <input type="text" name="q" value=""><br><br>
+    <input type="submit" value="Search">
+  </form>
+</div>
+
+<%- include('../partials/footer') %>
