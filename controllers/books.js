@@ -1,27 +1,34 @@
 const axios = require('axios');
 const mongoose = require('mongoose');
 
-const Book = require('../models/book')
+const Book = require('../models/book');
+const User = require('../models/user');
 
 module.exports = {
   search,
   index,
-  addToCollection
+  addToBooklist
 }
 
 function index(req,res) {
-  Book.find( { collectedBy: req.user._id })
-  .then(books => {
-    res.render('books/index', {
-      title: 'My Books',
-      user: req.user,
-      books
-    })
-  })
+  req.user
+  .populate('books').exec((err, booklists))
 }
+
+
+//   Book.find( { collectedBy: req.user._id })
+//   .then(books => {
+//     res.render('books/index', {
+//       title: 'My Books',
+//       user: req.user,
+//       books
+//     })
+//   })
+// }
 
 function search(req, res) {
   const q = req.query.intitle + req.query.inauthor;
+
   if (q) {
     const searchUrl='https://www.googleapis.com/books/v1/volumes?q=';
     axios.get(searchUrl+q)
@@ -53,7 +60,7 @@ function search(req, res) {
   }
 }
 
-function addToCollection(req, res) {
+function addToBooklist(req, res) {
   req.body.collectedBy = req.user._id;
   Book.findOne({ googleId: req.body.googleId})
   .then(book => {
@@ -63,7 +70,11 @@ function addToCollection(req, res) {
     } else {
       Book.create(req.body)
     }
-  const q = `intitle=${req.body.qTitle}&inauthor=${req.body.qAuthor}`
-  res.redirect(`/books/search?${q}`)
+  req.user.booklists[0].books.push(book)
+  req.user.save()
+    .then( () => {
+      const q = `intitle=${req.body.qTitle}&inauthor=${req.body.qAuthor}`
+      res.redirect(`/books/search?${q}`)
+   })
   })
 }

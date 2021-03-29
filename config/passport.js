@@ -1,6 +1,7 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const User = require("../models/user");
+const Booklist = require("../models/booklist");
 
 passport.use(
   new GoogleStrategy(
@@ -27,9 +28,13 @@ passport.use(
             googleId: profile.id,
             avatar: profile.photos[0].value,
           });
-          newUser.save(function (err) {
-            if (err) return cb(err);
-            return cb(null, newUser);
+          Booklist.create({ name: 'My Reading List', ownerId: newUser._id})
+          .then(booklist => {
+            newUser.booklists.push(booklist._id)
+            newUser.save(function (err) {
+              if (err) return cb(err);
+              return cb(null, newUser);
+            });
           });
         }
       });

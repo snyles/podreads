@@ -1,6 +1,37 @@
 <%- include('../partials/header') %>
 
 
+<% user.booklists.forEach(booklist => { %>
+  <h2><%= booklist.name %></h2>
+
+  <% booklist.books.forEach(book => { %>
+    <div class="bookcard">
+      <form action="/books/<%= book._id %>?_method=DELETE" method="post">
+      <% if (book.thumbnail) { %>
+      <img src="<%= book.thumbnail %>"" alt="<%= book.title %>">
+      <% } %>
+
+      <% if (book.title) { %>
+      <p>Title: <%= book.title %> </p>
+      <% } %>
+
+      <% if (book.author) { %>
+      <p>Author: <%= book.author %> </p>
+      <% } %>
+
+      <% if (book.published) { %>
+        <p>Published: <%= book.volumeInfo.publishedDate.toLocaleString() %> </p>
+      <% } %>
+
+      <input type="text" name="googleId" hidden value="<%= book.googleId %>">
+      
+      <input type="submit" value="Remove Book">
+      </form>
+    </div>
+  <% }) %>
+<% }) %>
+
+
 
 
 <%- include('../partials/footer') %>
