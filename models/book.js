@@ -5,10 +5,9 @@ const bookSchema = new Schema(
   {
     title: String,
     author: String,
-    googleId: String,
     published: Date,
     thumbnail: String,
-    booklists: [{ type: Schema.Types.ObjectId, ref: "Booklist" }],
+    googleId: String,
     collectedBy: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   {

@@ -5,30 +5,33 @@
   <h2><a href="/booklists/<%= booklist._id %>">
     <%= booklist.name %>
   </a></h2>
+  <% if (booklist.books.length === 0) { %>
+    <p>No books in your list, <a href="/books">add some</a></p>
+  <% } else { %>
+    <% booklist.books.forEach(book => { %>
+      <div class="bookcard">
+        <% if (book.thumbnail) { %>
+        <img src="<%= book.thumbnail %>"" alt="<%= book.title %>">
+        <% } %>
 
-  <% booklist.books.forEach(book => { %>
-    <div class="bookcard">
-      <% if (book.thumbnail) { %>
-      <img src="<%= book.thumbnail %>"" alt="<%= book.title %>">
-      <% } %>
+        <% if (book.title) { %>
+        <p><%= book.title %> </p>
+        <% } %>
 
-      <% if (book.title) { %>
-      <p><%= book.title %> </p>
-      <% } %>
+        <% if (book.author) { %>
+        <p>by <%= book.author %> </p>
+        <% } %>
 
-      <% if (book.author) { %>
-      <p>by <%= book.author %> </p>
-      <% } %>
-
-      <% if (book.published) { %>
-        <p>Published: <%= book.published.getFullYear() %> </p>
-      <% } %>
-      <form action="/books/<%= book._id %>?_method=DELETE" method="post">
-      <input type="text" name="booklistId" hidden value="<%= booklist._id %>">
-      <input type="submit" value="Remove Book">
-      </form>
-    </div>
-  <% }) %>
+        <% if (book.published) { %>
+          <p>Published: <%= book.published.getFullYear() %> </p>
+        <% } %>
+        <form action="/books/<%= book._id %>?_method=DELETE" method="post">
+        <input type="text" name="booklistId" hidden value="<%= booklist._id %>">
+        <input type="submit" value="Remove Book">
+        </form>
+      </div>
+    <% }) %>
+  <% } %>
 <% }) %>
 
 

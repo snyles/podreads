@@ -17,17 +17,15 @@ function search(req, res) {
     const searchUrl='https://www.googleapis.com/books/v1/volumes?q=';
     axios.get(searchUrl+q)
     .then(response => {
-      // console.log(response.data.items[0].volumeInfo.title);
-      User.findById(req.user._id)
-      .populate('booklists').exec((error, u) => {
+      Booklist.find({ownerId: req.user._id })
+      .then(booklists => { 
         res.render('books/search', {
           title: "Search for Books",
           user: req.user,
           results: response.data.items,
-          
           qTitle: req.query.intitle,
           qAuthor: req.query.inauthor,
-          booklists: u.booklists,
+          booklists: booklists,
         })
       })
     })

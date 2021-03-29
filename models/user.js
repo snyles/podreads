@@ -8,7 +8,6 @@ const userSchema = new Schema(
     email: String,
     avatar: String,
     googleId: String,
-    booklists: [{ type: Schema.Types.ObjectId, ref: "Booklist" }],
   },
   {
     timestamps: true,
