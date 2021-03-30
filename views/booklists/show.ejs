@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <h2><%= booklist.name %></h2>
-
+<p><a href="/booklists/<%= booklist._id %>/edit">Edit Name</a></p>
 <% booklist.books.forEach(book => { %>
   <div class="bookcard">
     <% if (book.thumbnail) { %>
@@ -25,8 +25,5 @@
     </form>
   </div>
 <% }) %>
-
-
-
 
 <%- include('../partials/footer') %>

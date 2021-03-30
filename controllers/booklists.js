@@ -10,6 +10,7 @@ module.exports = {
   create,
   show,
   delete: deleteBooklist,
+  edit,
   update
 }
 
@@ -49,6 +50,20 @@ function deleteBooklist(req, res) {
   })
 }
 
-function update(req, res) {
+function edit(req,res) {
+  Booklist.findById(req.params.id)
+  .then( booklist => {
+    res.render('booklists/edit', { 
+      title: 'Edit Booklist', 
+      booklist,
+      user: req.user
+     })
+  })
+}
 
+function update(req, res) {
+  Booklist.findByIdAndUpdate(req.params.id, req.body)
+  .then( booklist => 
+    res.redirect(`/booklists/${booklist._id}`)
+  )
 }

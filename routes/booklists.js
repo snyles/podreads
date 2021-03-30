@@ -5,6 +5,8 @@ const booklistsCtrl = require('../controllers/booklists');
 
 router.get('/', isLoggedIn, booklistsCtrl.index);
 router.get('/:id', isLoggedIn, booklistsCtrl.show);
+router.get('/:id/edit', isLoggedIn, booklistsCtrl.edit)
+router.put('/:id', isLoggedIn, booklistsCtrl.update)
 router.post('/', isLoggedIn, booklistsCtrl.create);
 
 function isLoggedIn(req, res, next) {

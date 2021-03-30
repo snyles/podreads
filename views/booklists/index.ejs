@@ -1,5 +1,12 @@
 <%- include('../partials/header') %>
 
+<form action="/booklists" method="POST">
+  <label for="name">New Booklist Name
+    <input type="text" name="name" required=true>
+    <button type="submit">New Booklist</button>
+  </label>
+
+</form>
 
 <% booklists.forEach(booklist => { %>
   <h2><a href="/booklists/<%= booklist._id %>">
