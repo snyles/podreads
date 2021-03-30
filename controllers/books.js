@@ -62,7 +62,7 @@ function addToBooklist(req, res) {
         .then( () => {
           // const q = `intitle=${req.body.qTitle}&inauthor=${req.body.qAuthor}`
           // res.redirect(`/books/?${q}`)
-          res.redirect('/booklists')
+          res.redirect(`/booklists/${booklist._id}`)
         })
       } else {
         req.body.collectedBy = req.user._id;
@@ -73,7 +73,7 @@ function addToBooklist(req, res) {
           .then( () => {
             // const q = `intitle=${req.body.qTitle}&inauthor=${req.body.qAuthor}`
             // res.redirect(`/books/?${q}`)
-            res.redirect('/booklists')
+          res.redirect(`/booklists/${booklist._id}`)
           })
         })
       }

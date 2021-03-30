@@ -5,7 +5,11 @@ const podcastsCtrl = require('../controllers/podcasts');
 
 // router.get('/', isLoggedIn, podcastsCtrl.index);
 router.get('/search', isLoggedIn, podcastsCtrl.search)
-// router.get('/:id', isLoggedIn, podcastsCtrl.show);
+router.get('/:id', isLoggedIn, podcastsCtrl.show )
+router.post('/:id', isLoggedIn, podcastsCtrl.addPodcast )
+router.delete('/:id', isLoggedIn, podcastsCtrl.removePodcast )
+
+
 // router.post('/', isLoggedIn, podcastsCtrl.create);
 
 function isLoggedIn(req, res, next) {

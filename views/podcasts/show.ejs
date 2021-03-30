@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+<% if (results) { %>
+
+  <h1><%= results.title %> </h1>
+  <img src="<%= results.image %>" alt="<%= results.title %> ">
+
+  <% episodes.forEach(episode => { %>
+  
+    <h2><%= episode.title %></h2>
+    <% const desc = episode.description.replace( /(<([^>]+)>)/ig, '') %>
+    <p><%= desc %></p>
+    <% const pubDate = new Date(episode.pub_date_ms) %>
+    <p><%= pubDate.toDateString() %></p>
+
+    <p>Potential Authors
+      <% const regex = /[A-Z][a-z]*\s[A-Z][a-z]*/g %>
+      <% const potentialAuthors = desc.match(regex) %>
+      <% if (potentialAuthors) { %>
+        <ul>
+        <% potentialAuthors.forEach(author => { %>
+          <li>
+            <a href="/books?intitle=&inauthor=<%= author.replace(' ','+') %>"><%= author %></a>
+          </li>
+        <% }) %>
+      <% } %>
+      </ul>
+    </p>
+    
+  <% }) %>
+
+<% } %>
+
+
+
+<%- include('../partials/footer') %>

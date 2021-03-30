@@ -35,11 +35,15 @@ body {
 .bookcard {
   background: #ddd;
   margin: 20px;
-  padding: 40px;
+  padding: 20px;
   display: inline-block;
   border-radius: 16px;
   color: #333;
+  max-width: 300px;
+}
 
+.bookcard img {
+  width: 80%;
 }
 
 nav {

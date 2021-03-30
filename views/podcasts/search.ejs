@@ -4,9 +4,58 @@
 <div class='searchForm'>
   <form action="/podcasts/search" method="PUT">
     <h2><%= title %></h2>
-    <input type="text" name="q" value=""><br><br>
+    <input type="text" name="q" value="<%= query %>"><br><br>
     <input type="submit" value="Search">
   </form>
 </div>
+
+<% if(results) { %>
+
+  <div id="searchResults">
+  
+  <% results.forEach(podcast => { %>
+      <div class="bookcard">
+        <% if (user.podcasts.includes(podcast.id)) { %>
+          <form action="/podcasts/<%= podcast.id %>?_method=DELETE" method="post">
+        <% } else { %>
+            <form action="/podcasts/<%= podcast.id %>" method="post">
+        <% } %>
+        <% if (podcast.image) { %>
+        <a href="/podcasts/<%= podcast.id %>">
+          <img src="<%= podcast.image %>"" alt="<%= podcast.title_original %>">
+        </a>
+        <% } %>
+  
+        <% if (podcast.title_original) { %>
+        <p>Title: <%= podcast.title_original %> </p>
+        <% } %>
+  
+        <% if (podcast.publisher_original) { %>
+        <p>Publisher: <%= podcast.publisher_original %> </p>
+        <% } %>
+  
+        <% if (podcast.pub_date_ms) { %>
+          <p>Published: <%= podcast.pub_date_ms.toLocaleString() %> </p>
+        <% } %>
+  
+        <% if (podcast.description_original) { %>
+          <% let desc = podcast.description_original.split('.').slice(0,1).join('.') + '...'; %>
+          <p>Description: <%= desc %> </p>
+        <% } %>
+ 
+        <input type="submit" value="<%= user.podcasts.includes(podcast.id) ? 'Unfollow Podcast' : 'Follow Podcast' %>">
+        </form>
+      </div>
+  <% }) %>
+  <%= nextOffset %>
+  <%= resultsTotal %>
+    <% if (nextOffset < resultsTotal) { %>
+    <a href="/podcasts/search/?q=<%= query %>&offset=<%= nextOffset %>">Next Results</a>
+    <% } %>
+    <% if (nextOffset > resultsCount) { %>
+    <a href="/podcasts/search/?q=<%= query %>&offset=<%= nextOffset - results.length %>">Next Results</a>
+      <% } %>
+    </div>
+  <% } %>
 
 <%- include('../partials/footer') %>
