@@ -55,7 +55,7 @@ function show(req, res) {
     // console.log(response.body)
     res.render('podcasts/show', {
       title: `Podcast: ${response.body.title}`,
-      results: response.body,
+      podcast: response.body,
       episodes: response.body.episodes,
       nextDate: response.body.next_episode_pub_date,
       user: req.user,
