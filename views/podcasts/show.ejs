@@ -4,13 +4,16 @@
 
   <h1><%= podcast.title %> </h1>
   <p>
-    <% if (user.podcasts.includes(podcast.id)) { %>
+    <% if (user.podcasts.some(pod => pod.podcastId === podcast.id)) { %>
       <form action="/podcasts/<%= podcast.id %>?_method=DELETE" method="post">
     <% } else { %>
-        <form action="/podcasts/<%= podcast.id %>" method="post">
-    <% } %>
-    <input type="submit" value="<%= user.podcasts.includes(podcast.id) ? 'Unfollow Podcast' : 'Follow Podcast' %>">
-    </form>
+      <form action="/podcasts" method="post">
+      <% } %>
+        <input type="text" name="image" hidden value="<%= podcast.image %>">
+        <input type="text" name="title" hidden value="<%= podcast.title %>">          
+        <input type="text" name="podcastId" hidden value=<%= podcast.id %>>
+        <input type="submit" value="<%= user.podcasts.some(pod => pod.podcastId === podcast.id) ? 'Unfollow Podcast' : 'Follow Podcast' %>">
+      </form>
   </p>
   <img src="<%= podcast.image %>" alt="<%= podcast.title %> ">
 

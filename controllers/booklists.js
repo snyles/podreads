@@ -28,8 +28,8 @@ function index(req, res) {
 function create(req, res) {
   req.body.ownerId = req.user._id
   Booklist.create(req.body)
-  .then( () => {
-    res.redirect('/booklists')
+  .then( (booklist) => {
+    res.redirect(`/booklists/${booklist._id}`)
   })
 }
 
@@ -45,7 +45,7 @@ function show(req, res) {
 }
 
 function deleteBooklist(req, res) {
-  Booklist.findByIdAndDelete(req.params.id, (err, booklist) => {
+  Booklist.findByIdAndDelete(req.params.id, (err) => {
     res.redirect('/booklists')
   })
 }

@@ -18,16 +18,19 @@
         <% if (user.podcasts.includes(podcast.id)) { %>
           <form action="/podcasts/<%= podcast.id %>?_method=DELETE" method="post">
         <% } else { %>
-            <form action="/podcasts/<%= podcast.id %>" method="post">
+            <form action="/podcasts" method="post">
         <% } %>
+
         <% if (podcast.image) { %>
         <a href="/podcasts/<%= podcast.id %>">
-          <img src="<%= podcast.image %>"" alt="<%= podcast.title_original %>">
+          <img src="<%= podcast.image %>" alt="<%= podcast.title_original %>">
         </a>
+        <input type="text" name="image" hidden value="<%= podcast.image %>">
         <% } %>
   
         <% if (podcast.title_original) { %>
         <p>Title: <%= podcast.title_original %> </p>
+        <input type="text" name="title" hidden value="<%= podcast.title_original %>">
         <% } %>
   
         <% if (podcast.publisher_original) { %>
@@ -42,8 +45,10 @@
           <% let desc = podcast.description_original.split('.').slice(0,1).join('.') + '...'; %>
           <p>Description: <%= desc %> </p>
         <% } %>
+
+        <input type="text" name="podcastId" hidden value="<%= podcast.id %>">
  
-        <input type="submit" value="<%= user.podcasts.includes(podcast.id) ? 'Unfollow Podcast' : 'Follow Podcast' %>">
+        <input type="submit" value="<%= user.podcasts.some(pod => pod.podcastId === podcast.id) ? 'Unfollow Podcast' : 'Follow Podcast' %>">
         </form>
       </div>
   <% }) %>

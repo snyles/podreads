@@ -10,8 +10,9 @@ const user = require('../models/user');
 module.exports = {
   search,
   show,
-  addPodcast,
-  removePodcast,
+  create,
+  delete: deletePodcast,
+  index,
 }
 
 function search(req,res) {
@@ -66,17 +67,25 @@ function show(req, res) {
   })
 }
 
-function addPodcast(req, res) {
-  if(!req.user.podcasts.includes(req.params.id)) {
-    req.user.podcasts.push(req.params.id)
+function create(req, res) {
+  if(!req.user.podcasts.some( podcast => podcast.podcastId === req.body.id)) {
+    req.user.podcasts.push(req.body)
     req.user.save()
   }
+  res.redirect(`/podcasts/${req.body.podcastId}`)
+}
+
+function deletePodcast(req, res) {
+  const idx = req.user.podcasts.findIndex( podcast => podcast.podcastId === req.params.id)
+  req.user.podcasts.splice(idx, 1);
+  req.user.save()
   res.redirect(`/podcasts/${req.params.id}`)
 }
 
-function removePodcast(req, res) {
-  const i = req.user.podcasts.indexOf(req.params.id)
-  req.user.podcasts.splice(i, 1);
-  req.user.save()
-  res.redirect(`/podcasts/${req.params.id}`)
+function index(req,res) {
+  res.render('podcasts/index', {
+    title: 'My Followed Podcasts',
+    podcasts: req.user.podcasts,
+    user: req.user
+  })
 }

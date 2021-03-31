@@ -2,6 +2,10 @@
 
 <h2><%= booklist.name %></h2>
 <p><a href="/booklists/<%= booklist._id %>/edit">Edit Name</a></p>
+
+<% if (booklist.books.length === 0) { %>
+  <p>This list is empty! <a href='/books'>Add books</a></p>
+<% } %>
 <% booklist.books.forEach(book => { %>
   <div class="bookcard">
     <% if (book.thumbnail) { %>

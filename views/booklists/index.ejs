@@ -5,13 +5,15 @@
     <input type="text" name="name" required=true>
     <button type="submit">New Booklist</button>
   </label>
-
 </form>
 
 <% booklists.forEach(booklist => { %>
   <h2><a href="/booklists/<%= booklist._id %>">
     <%= booklist.name %>
   </a></h2>
+  <form action="/booklists/<%= booklist._id %>?_method=DELETE" method=POST>
+  <button type="submit">Delete</button>
+  </form>
   <% if (booklist.books.length === 0) { %>
     <p>No books in your list, <a href="/books">add some</a></p>
   <% } else { %>

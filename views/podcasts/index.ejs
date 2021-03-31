@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+
+<% if (podcasts) { %>
+  <% podcasts.forEach(podcast => { %>
+    
+  <h2> <%= podcast.title %></h2>
+  <a href="/podcasts/<%= podcast.podcastId %>"><img src="<%= podcast.image %>" alt="<%= podcast.title %> "></a>    
+  <% }) %>
+<% } %>
+
+<%- include('../partials/footer') %>
