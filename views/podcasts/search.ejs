@@ -1,65 +1,62 @@
 <%- include('../partials/header') %>
 
-<div class='searchForm'>
+<h1>Search for Podcasts</h1>
   <form action="/podcasts/search" method="PUT">
-    <h2><%= title %></h2>
-    <input type="text" name="q" value="<%= query %>"><br><br>
-    <input type="submit" value="Search">
-  </form>
+      <div class='input-group'>
+        <input type="text" name="q" value="<%= query %>">
+        <button type="submit">Search</button>
+    </form>
+  </div>
 </div>
 
 <% if(results) { %>
 
-  <div id="searchResults" class=".d-flex">
-  
+<div class="card-container">
   <% results.forEach(podcast => { %>
       <div class="card">
         <% if (user.podcasts.includes(podcast.id)) { %>
           <form action="/podcasts/<%= podcast.id %>?_method=DELETE" method="post">
         <% } else { %>
-            <form action="/podcasts" method="post">
+          <form action="/podcasts" method="post">
         <% } %>
-
-        <% if (podcast.image) { %>
-        <a href="/podcasts/<%= podcast.id %>">
-          <img src="<%= podcast.image %>" alt="<%= podcast.title_original %>">
-        </a>
-        <input type="text" name="image" hidden value="<%= podcast.image %>">
-        <% } %>
-  
-        <% if (podcast.title_original) { %>
-        <p>Title: <%= podcast.title_original %> </p>
-        <input type="text" name="title" hidden value="<%= podcast.title_original %>">
-        <% } %>
-  
-        <% if (podcast.publisher_original) { %>
-        <p>Publisher: <%= podcast.publisher_original %> </p>
-        <% } %>
-  
-        <% if (podcast.pub_date_ms) { %>
-          <p>Published: <%= podcast.pub_date_ms.toLocaleString() %> </p>
-        <% } %>
-  
-        <% if (podcast.description_original) { %>
-          <% let desc = podcast.description_original.split('.').slice(0,1).join('.') + '...'; %>
-          <p>Description: <%= desc %> </p>
-        <% } %>
-
-        <input type="text" name="podcastId" hidden value="<%= podcast.id %>">
- 
-        <input type="submit" value="<%= user.podcasts.some(pod => pod.podcastId === podcast.id) ? 'Unfollow Podcast' : 'Follow Podcast' %>">
+        <div class="card-img">
+          <% if (podcast.image) { %>
+          <a href="/podcasts/<%= podcast.id %>">
+            <img src="<%= podcast.image %>" alt="<%= podcast.title_original %>">
+          </a>
+          <input type="text" name="image" hidden value="<%= podcast.image %>">
+          <% } %>
+        </div>
+        <div class="card-title">
+          <% if (podcast.title_original) { %>
+          <p class="title"><%= podcast.title_original %> </p>
+          <input type="text" name="title" hidden value="<%= podcast.title_original %>">
+          <% } %>
+          <% if (podcast.publisher_original) { %>
+          <p><span>Publisher:</span> <%= podcast.publisher_original %> </p>
+          <% } %>
+        </div>
+        <div class="card-desc">
+          <% if (podcast.description_original) { %>
+            <% let desc = podcast.description_original.split(' ').slice(0,30).join(' ') + '...'; %>
+            <p class="desc"><span>Description:</span> <%= desc %> </p>
+          <% } %>
+        </div>
+        <div class="card-button">
+          <input type="text" name="podcastId" hidden value="<%= podcast.id %>">
+          <input type="submit" value="<%= user.podcasts.some(pod => pod.podcastId === podcast.id) ? 'Unfollow Podcast' : 'Follow Podcast' %>">
+        </div> 
         </form>
       </div>
-  <% }) %>
-  <%= nextOffset %>
-  <%= resultsTotal %>
+      <% }) %>
+    </div>
     <% if (nextOffset < resultsTotal) { %>
     <a href="/podcasts/search/?q=<%= query %>&offset=<%= nextOffset %>">Next Results</a>
     <% } %>
     <% if (nextOffset > resultsCount) { %>
     <a href="/podcasts/search/?q=<%= query %>&offset=<%= nextOffset - results.length %>">Next Results</a>
       <% } %>
-    </div>
+   
   <% } %>
 
 <%- include('../partials/footer') %>

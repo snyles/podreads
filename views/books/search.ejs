@@ -1,60 +1,65 @@
 <%- include('../partials/header') %>
 
-
-<div class=searchForm>
+<h1>Search for Books</h1>
   <form action="/books">
-    <h2>Book Search</h3>
     <label for="intitle">Title:</label>
-    <input type="text" name="intitle" value="<%= qTitle %>"><br><br>
+    <input type="text" name="intitle" value="<%= qTitle %>">
     <label for="inauthor">Author:</label>
-    <input type="text" name="inauthor" value="<%= qAuthor %>"><br><br>
-    <input type="submit" value="Search">
+    <input type="text" name="inauthor" value="<%= qAuthor %>">
+    <button type="submit" value="Search">Search</button>
   </form>
-</div>
+
 
 <% if(results) { %>
 
-<div id="searchResults">
+<div id="card-container">
 
 <% results.forEach(book => { %>
-    <div class="bookcard">
+
+  <div class="bookcard">
       <form action="/books" method="post">
       <% if (book.volumeInfo.imageLinks) { %>
-      <img src="<%= book.volumeInfo.imageLinks.thumbnail %>"" alt="<%= book.volumeInfo.title %>">
-      <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
+      <div class="bookcard-img">
+        <img src="<%= book.volumeInfo.imageLinks.thumbnail %>">
+        <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
       <% } %>
+      </div>
 
+      <div class="bookcard-info">
       <% if (book.volumeInfo.title) { %>
-      <p>Title: <%= book.volumeInfo.title %> </p>
+      <p><span>Title: </span> <%= book.volumeInfo.title %> </p>
       <input type="text" hidden name="title" value="<%= book.volumeInfo.title %>">
       <% } %>
 
       <% if (book.volumeInfo.authors) { %>
-      <p>Author: <%= book.volumeInfo.authors.join(', ') %> </p>
+      <p><span>Author: </span><%= book.volumeInfo.authors.join(', ') %> </p>
       <input type="text" hidden name="author" value="<%= book.volumeInfo.authors.join(', ') %>">
       <% } %>
 
       <% if (book.volumeInfo.publishedDate) { %>
-        <p>Published: <%= book.volumeInfo.publishedDate %> </p>
+        <p><span>Published: </span><%= book.volumeInfo.publishedDate %> </p>
         <input type="text" hidden name="published" value="<%= book.volumeInfo.publishedDate.toLocaleString() %>">
       <% } %>
 
       <% if (book.volumeInfo.description) { %>
-        <% let desc = book.volumeInfo.description.split('.').slice(0,1).join('.') + '...'; %>
-        <p>Description: <%= desc %> </p>
+        <% let desc = book.volumeInfo.description.split(' ').slice(0,20).join(' ') + '...'; %>
+        <p><span>Description:</span> <%= desc %> </p>
         <input type="text" hidden name="description" value="<%= desc %>">
       <% } %>
 
       <input type="text" name="googleId" hidden value="<%= book.id %>">
       <input type="text" name="qTitle" hidden value="<%= qTitle %>">
       <input type="text" name="qAuthor" hidden value="<%= qAuthor %>">
-
-      <select name="booklistSelect">
-        <% booklists.forEach( booklist => { %>
-          <option value="<%= booklist._id %>"><%= booklist.name %></option>
-        <% }) %>
-      </select>
-      <input type="submit" value="Add Book">
+      
+      <div class="readinglistSelect">
+        <select name="booklistSelect">
+          <% booklists.forEach( booklist => { %>
+            <option value="<%= booklist._id %>"><%= booklist.name %></option>
+          <% }) %>
+        </select>
+        <input type="submit" value="Add Book">
+      </div>
+    </div>
       </form>
     </div>
 <% }) %>

@@ -3,43 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <!-- <link rel="stylesheet" href="/stylesheets/style.css" /> -->
-    <script src="/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <title>PodReads: <%= title %></title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/"><i class="bi bi-earbuds"></i> PodReads <i class="bi bi-book"></i></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/podcasts">My Podcasts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/podcasts/search">Find Podcasts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/booklists">My Books</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/books/">Find Books</a>
-            </li>
-            <li class="nav-item">
-              <% if (user) { %>
-                <a class="nav-link" href="/auth/logout">Log Out</a>
-              <% } else { %>
-                <a class="nav-link" href="/auth/google">Login with Google</a>
-              <% } %>
-            </li>
-          </ul>
-        </div>
+    <nav>
+      <a href="/" class="brand">
+        <i class="fas fa-headphones"></i>
+        PodReads
+      </a>
+      <a href="/podcasts">My Podcasts</a>
+      <a href="/podcasts/search">Find Podcasts</a>
+      <a href="/booklists">My Books</a>
+      <a href="/books/">Find Books</a>
+      <% if (user) { %>
+        <a href="/auth/logout">Log Out</a>
+      <% } else { %>
+        <a href="/auth/google">Login with Google</a>
+      <% } %>
     </nav>
-    <div class="container">

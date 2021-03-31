@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald&display=swap');
+
 html {
   box-sizing: border-box
 }
@@ -19,7 +21,7 @@ html {
 
 body {
   /* Use a system font, if none are available use an available sans-sarif font */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
   Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   margin: 0;
   min-height: 100vh;
@@ -28,44 +30,9 @@ body {
   background-color: #333;
   color: white;
   text-align: center;
-}
 
-
-
-.bookcard {
-  background: #ddd;
-  margin: 20px;
-  padding: 20px;
-  display: inline-block;
-  border-radius: 16px;
-  color: #333;
-  max-width: 300px;
-}
-
-.bookcard img {
-  width: 80%;
-}
-
-nav {
-  background-color: #999;
-  font-size: 1.6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0 20px 0;
-}
-
-nav a {
-  display: inline-block;
-  margin: 0;
-  padding: 20px;
-  color: orange;
-  text-decoration: none;
-}
-
-nav a:hover {
-  text-decoration: underline;
-  background: #aaa;
+   /* #f77f00; */
+   --link-orange: #faa307
 }
 
 main {
@@ -74,17 +41,199 @@ main {
   justify-content: center;
 }
 
-h1 {
-  font-size: 3.6rem;
+h1, h2, h3, .brand, nav a {
+  font-family: 'Oswald';
+}
+
+label {
+  font-size: 2rem;
+  margin: 0 1rem;
 }
 
 p {
   font-size: 2rem;
 }
 
-#searchResults {
+h1 {
+  font-size: 3.5rem;
+}
+
+nav {
+  background-color: #999;
+  font-size: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 0 40px 0;
+}
+
+nav a.brand {
+  font-size: 3rem;
+  font-weight: 700;
+  padding: 1.5rem;
+}
+
+nav a {
+  display: inline-block;
+  margin: 0;
+  padding: 25px 25px 20px 25px;
+  border-bottom: solid 5px #999;
+  color: var(--link-orange);
+  text-decoration: none;
+  font-size: 2.2rem;
+}
+nav a:last-of-type {
+  margin-left: auto;
+}
+
+nav a:hover {
+  /* text-decoration: underline; */
+  background: #aaa;
+  border-bottom: solid 5px var(--link-orange);
+}
+
+.container {
+  max-width: 80vw;
   margin: 0 auto;
-  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card-container {
+  max-width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  margin: 20px;
+  max-width: 480px;
+  border-radius: 12px;
+}
+.card form {
+  padding: 40px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 200px 200px;
+  grid-template-rows: 200px 140px 40px;
+  grid-template-areas: 
+    "picture title"
+    "desc desc"
+    "button button";
+  background: rgba(200,200,200,.8);
+  border-radius: 12px;
+}
+
+.card-img {
+  grid-area: picture;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img img {
+  max-width: 180px;
+  max-height: 180px;
+}
+
+.card-title {
+  grid-area: title;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+.card p {
+  margin: 10px 0;
+  text-align: left;
+  font-size: 1.6rem;
+}
+
+.card p.title {
+  font-size: 2.6rem;
+  color: orange;
+}
+
+.card p > span {
+  color: orange;
+  font-weight: 700;
+}
+
+.card-desc {
+  grid-area: desc;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.card-button {
+  grid-area: button;
+}
+
+.bookcard {
+  margin: 20px;
+}
+
+.bookcard form {
+  display: flex;
+  flex-direction: row;
+}
+
+.bookcard-img {
+  width: 200px;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ccc;
+}
+
+.bookcard-img img {
+  width: 100%;
+  height: 100%;
+}
+.bookcard-info {
+  width: 400px;
+  height: 300px;
+  background: #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+  text-align: left;
+}
+
+.bookcard-info p {
+  margin: 5px 0;
+  font-size: 1.6rem;
+}
+
+.bookcard-info .readinglistSelect {
+  margin: 0 auto;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.bookcard-info select {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.bookcard-info input {
+  width: 100px;
+  margin: 0 auto;
+}
+
+.bookcard-info span {
+  color: orange;
 }
