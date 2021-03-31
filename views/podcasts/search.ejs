@@ -1,6 +1,5 @@
 <%- include('../partials/header') %>
 
-
 <div class='searchForm'>
   <form action="/podcasts/search" method="PUT">
     <h2><%= title %></h2>
@@ -11,10 +10,10 @@
 
 <% if(results) { %>
 
-  <div id="searchResults">
+  <div id="searchResults" class=".d-flex">
   
   <% results.forEach(podcast => { %>
-      <div class="bookcard">
+      <div class="card">
         <% if (user.podcasts.includes(podcast.id)) { %>
           <form action="/podcasts/<%= podcast.id %>?_method=DELETE" method="post">
         <% } else { %>
