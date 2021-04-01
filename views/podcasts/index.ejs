@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <h1>Followed Podcasts</h1>
-<% if (podcasts) { %>
+<% if (podcasts.length > 0) { %>
   <div class="card-container">
   <% podcasts.forEach(podcast => { %>
     <div class="my-podcast-card">

@@ -30,7 +30,6 @@ passport.use(
           });
           Booklist.create({ name: 'My Reading List', ownerId: newUser._id})
           .then(booklist => {
-            // newUser.booklists.push(booklist._id)
             console.log(booklist);
             newUser.save(function (err) {
               if (err) return cb(err);

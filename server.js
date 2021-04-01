@@ -13,7 +13,8 @@ require("dotenv").config();
 const app = express();
 
 // connect to MongoDB with mongoose
-require("./config/localDatabase");
+// require("./config/localDatabase");
+require("./config/database");
 
 // load passport
 require("./config/passport");

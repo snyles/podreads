@@ -52,10 +52,7 @@ main.splash {
   margin: 0 auto;
   background-image: url('/images/headphones_bg.jpg');
   background-size: cover;
-  position: absolute;
-  top: 70px;
-  left: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 
@@ -152,6 +149,7 @@ h2 {
 }
 nav {
   background-color: #999;
+  /* background: linear-gradient(#999, #ccc); */
   font-size: 2rem;
   display: flex;
   justify-content: flex-start;
@@ -218,7 +216,7 @@ nav i {
   border-radius: 12px;
 }
 .card form {
-  padding: 40px;
+  padding: 20px;
   display: grid;
   grid-template-columns: 200px 200px;
   grid-template-rows: 200px 140px 40px;
@@ -226,7 +224,7 @@ nav i {
     "picture title"
     "desc desc"
     "button button";
-  background: rgba(200,200,200,.8);
+  background: #999;
   border-radius: 12px;
 }
 
@@ -247,6 +245,8 @@ nav i {
   display: flex;
   flex-direction: column;
   padding: 0 10px;
+  font-weight: 700;
+  overflow:hidden;
 }
 
 .card p {
@@ -256,7 +256,7 @@ nav i {
 }
 
 .card p.title {
-  font-size: 2.6rem;
+  font-size: 2rem;
   color: orange;
 }
 
@@ -394,10 +394,16 @@ nav i {
   background-size: contain;
 }
 
+.my-podcast-card:hover {
+  filter: brightness(1.2);
+}
+
 .my-podcast-card img {
   height: 100%;
   width: 100%;
 }
+
+
 
 .podcast-title a:hover{
   text-decoration: underline;
@@ -482,4 +488,18 @@ nav i {
 
 .results-pagination a {
  margin: 0 10px;
+}
+
+@media only screen and (max-width: 860px) {
+
+nav {
+  flex-direction: column;
+  height: auto;
+}
+
+.pod-show-info {
+  flex-direction: column;
+  align-items: center;
+}
+
 }
