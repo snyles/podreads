@@ -35,7 +35,7 @@ function search(req, res) {
       Booklist.find({ownerId: req.user._id })
       .then(booklists => { 
         res.render('books/search', {
-          title: "Search for Books",
+          title: "Book Search",
           user: req.user,
           results: response.data.items,
           qTitle: req.query.intitle,
@@ -60,7 +60,7 @@ function search(req, res) {
       qAuthor: null,
       booklists: null,
       user: req.user,
-      title: "Search for Books",
+      title: "Book Search",
     })
   }
 }

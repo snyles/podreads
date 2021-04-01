@@ -79,7 +79,7 @@ function deletePodcast(req, res) {
 
 function index(req,res) {
   res.render('podcasts/index', {
-    title: 'My Followed Podcasts',
+    title: 'Followed Podcasts',
     podcasts: req.user.podcasts,
     user: req.user
   })
