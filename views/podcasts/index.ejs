@@ -4,13 +4,12 @@
 <% if (podcasts) { %>
   <div class="card-container">
   <% podcasts.forEach(podcast => { %>
-    <div class="podcast-card">
-      <div class="podcast-title"><a href="/podcasts/<%= podcast.podcastId %>"><%= podcast.title %></a></div>
-      <a href="/podcasts/<%= podcast.podcastId %>"><img src="<%= podcast.image %>" alt="<%= podcast.title %> "></a>    
+    <div class="my-podcast-card" style="background-image: url(<%= podcast.image %>);"">
+      <a href="/podcasts/<%= podcast.podcastId %>"></a>
     </div>
   <% }) %>
-
-
-</div>
+  </div>
+<% } else { %>
+<p>You have no followed podcasts, <a href="/podcasts/search">search for some!</a></p>
 <% } %>
 <%- include('../partials/footer') %>
