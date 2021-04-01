@@ -60,7 +60,7 @@ button, option, select {
 
 label {
   font-size: 2.5rem;
-  margin: 0 1rem;
+  margin: 0rem;
 }
 
 a {
@@ -432,4 +432,16 @@ nav i {
 
 .pod-authorlist a {
   font-size: 2rem;
+}
+
+.results-pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: spaced-evenly;
+  margin: 20px auto;
+  font-size: 2rem;
+}
+
+.results-pagination a {
+ margin: 0 10px;
 }

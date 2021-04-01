@@ -10,7 +10,18 @@
 </div>
 
 <% if(results) { %>
-
+  <div class="results-pagination">
+    <% if (nextOffset > resultsCount) { %>
+      <% const prevOffset = nextOffset - (resultsCount * 2) %>
+    <a href="/podcasts/search/?q=<%= query %>&offset=<%= prevOffset %>">Previous Results</a>
+    <% } %>
+    <% if (nextOffset > resultsCount && nextOffset < resultsTotal) { %>
+      |
+    <% } %>
+    <% if (nextOffset < resultsTotal) { %>
+    <a href="/podcasts/search/?q=<%= query %>&offset=<%= nextOffset %>">Next Results</a>
+    <% } %>
+  </div>
 <div class="card-container">
   <% results.forEach(podcast => { %>
       <div class="card">
@@ -52,12 +63,19 @@
       </div>
       <% }) %>
     </div>
-    <% if (nextOffset < resultsTotal) { %>
-    <a href="/podcasts/search/?q=<%= query %>&offset=<%= nextOffset %>">Next Results</a>
-    <% } %>
-    <% if (nextOffset > resultsCount) { %>
-    <a href="/podcasts/search/?q=<%= query %>&offset=<%= nextOffset - results.length %>">Next Results</a>
+
+    <div class="results-pagination">
+      <% if (nextOffset > resultsCount) { %>
+        <% const prevOffset = nextOffset - (resultsCount * 2) %>
+      <a href="/podcasts/search/?q=<%= query %>&offset=<%= prevOffset %>">Previous Results</a>
       <% } %>
+      <% if (nextOffset > resultsCount && nextOffset < resultsTotal) { %>
+        |
+      <% } %>
+      <% if (nextOffset < resultsTotal) { %>
+      <a href="/podcasts/search/?q=<%= query %>&offset=<%= nextOffset %>">Next Results</a>
+      <% } %>
+    </div>
    
   <% } %>
 
