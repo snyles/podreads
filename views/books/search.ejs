@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <h1>Search for Books</h1>
-  <form action="/books" class="search">
+  <form action="/books" class="search" method=PUT>
     <label for="intitle">Title:
     <input type="text" name="intitle" value="<%= qTitle %>"></label>
     <label for="inauthor">Author:
@@ -12,6 +12,19 @@
 
 <% if(results) { %>
 
+  <div class="results-pagination">
+    <% const resultsCount = 10 %>
+    <% if (nextOffset > resultsCount) { %>
+      <% const prevOffset = nextOffset - (resultsCount * 2) %>
+    <a href="/books?intitle=<%= qTitle.replace(' ','+') %>&inauthor=<%= qAuthor.replace(' ','+') %>&offset=<%= prevOffset %>">Previous Results</a>
+    <% } %>
+    <% if (nextOffset > resultsCount && nextOffset < resultsTotal) { %>
+      |
+    <% } %>
+    <% if (nextOffset < resultsTotal) { %>
+    <a href="/books?intitle=<%= qTitle.replace(' ','+') %>&inauthor=<%= qAuthor.replace(' ','+') %>&offset=<%= nextOffset %>">Next Results</a>
+    <% } %>
+  </div>
 <div class="card-container">
 
 <% results.forEach(book => { %>
@@ -67,7 +80,21 @@
     </div>
 <% }) %>
 
-  </div>
+
+
+</div>
+<div class="results-pagination">
+  <% if (nextOffset > resultsCount) { %>
+    <% const prevOffset = nextOffset - (resultsCount * 2) %>
+  <a href="/books?intitle=<%= qTitle.replace(' ','+') %>&inauthor=<%= qAuthor.replace(' ','+') %>&offset=<%= prevOffset %>">Previous Results</a>
+  <% } %>
+  <% if (nextOffset > resultsCount && nextOffset < resultsTotal) { %>
+    |
+  <% } %>
+  <% if (nextOffset < resultsTotal) { %>
+  <a href="/books?intitle=<%= qTitle.replace(' ','+') %>&inauthor=<%= qAuthor.replace(' ','+') %>&offset=<%= nextOffset %>">Next Results</a>
+  <% } %>
+</div>
 <% } %>
 
 <%- include('../partials/footer') %>

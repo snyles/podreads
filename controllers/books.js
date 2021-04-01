@@ -12,11 +12,26 @@ module.exports = {
 }
 
 function search(req, res) {
-  const q = req.query.intitle + req.query.inauthor;
+  let q = '';
+  console.log("req.query", req.query);
+  if(Object.keys(req.query).length !== 0) {
+    console.log(req.query.intitle);
+    if(req.query.intitle !== '') {
+      q = req.query.intitle;
+      if(req.query.inauthor) {
+        q += `+inauthor:${req.query.inauthor}`
+      }
+    } else {
+      q = `inauthor:${req.query.inauthor}`
+    }
+    q = q.replace(' ','+')
+  }
   if (q) {
-    const searchUrl='https://www.googleapis.com/books/v1/volumes?q=';
+    const offset = (req.query.offset) ? req.query.offset : 0;
+    const searchUrl=`https://www.googleapis.com/books/v1/volumes?startIndex=${offset}&q=`;
     axios.get(searchUrl+q)
     .then(response => {
+      // console.log(response.body);
       Booklist.find({ownerId: req.user._id })
       .then(booklists => { 
         res.render('books/search', {
@@ -25,13 +40,16 @@ function search(req, res) {
           results: response.data.items,
           qTitle: req.query.intitle,
           qAuthor: req.query.inauthor,
+          query: q,
           booklists: booklists,
+          nextOffset: parseInt(offset) + 10,
+          resultsTotal: response.data.totalItems,
         })
       })
     })
     .catch (error => {
       console.log(error);
-      res.redirect('/books/search');
+      res.redirect('/books');
     })
   }
   else {
@@ -60,8 +78,6 @@ function addToBooklist(req, res) {
         booklist.books.push(book._id)
         booklist.save()
         .then( () => {
-          // const q = `intitle=${req.body.qTitle}&inauthor=${req.body.qAuthor}`
-          // res.redirect(`/books/?${q}`)
           res.redirect(`/booklists/${booklist._id}`)
         })
       } else {
@@ -71,8 +87,6 @@ function addToBooklist(req, res) {
           booklist.books.push(book._id)
           booklist.save()
           .then( () => {
-            // const q = `intitle=${req.body.qTitle}&inauthor=${req.body.qAuthor}`
-            // res.redirect(`/books/?${q}`)
           res.redirect(`/booklists/${booklist._id}`)
           })
         })
