@@ -1,10 +1,8 @@
 <%- include('../partials/header') %>
 
 <form action="/booklists" method="POST">
-  <label for="name">New Booklist Name
-    <input type="text" name="name" required=true>
-    <button type="submit">New Booklist</button>
-  </label>
+  <input type="text" name="name" placeholder="Create New Booklist" required=true>
+  <button type="submit">New Booklist</button>
 </form>
 
 <% booklists.forEach(booklist => { %>
@@ -13,7 +11,7 @@
   </a></h1>
 
   <% if (booklist.books.length === 0) { %>
-    <p>No books in your list, <a href="/books">add some</a></p>
+    <p>No books in this list yet, <a href="/books">Add books</a></p>
   <% } else { %>
 
   <div class="card-container">

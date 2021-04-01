@@ -29,7 +29,9 @@
         </div>
         <div class="card-title">
           <% if (podcast.title_original) { %>
-          <p class="title"><%= podcast.title_original %> </p>
+          <p class="title">
+            <a href="/podcasts/<%= podcast.id %>"><%= podcast.title_original %></a>
+          </p>
           <input type="text" name="title" hidden value="<%= podcast.title_original %>">
           <% } %>
           <% if (podcast.publisher_original) { %>

@@ -1,11 +1,11 @@
 <%- include('../partials/header') %>
 
 <h1>Search for Books</h1>
-  <form action="/books">
-    <label for="intitle">Title:</label>
-    <input type="text" name="intitle" value="<%= qTitle %>">
-    <label for="inauthor">Author:</label>
-    <input type="text" name="inauthor" value="<%= qAuthor %>">
+  <form action="/books" class="search">
+    <label for="intitle">Title:
+    <input type="text" name="intitle" value="<%= qTitle %>"></label>
+    <label for="inauthor">Author:
+    <input type="text" name="inauthor" value="<%= qAuthor %>"></label>
     <button type="submit" value="Search"><i class="fas fa-search"></i> Search</button>
   </form>
 
@@ -17,7 +17,7 @@
 <% results.forEach(book => { %>
 
   <div class="bookcard">
-      <form action="/books" method="post">
+      <form action="/books" method="post" class="addbook-form">
 
       <div class="bookcard-img">
       <% if (book.volumeInfo.imageLinks) { %>

@@ -26,13 +26,22 @@ body {
   margin: 0;
   min-height: 100vh;
   
-  
+  display: flex;
+  flex-direction: column;
   background-color: #333;
   color: white;
   text-align: center;
 
    /* #f77f00; */
    --link-orange: #faa307
+}
+
+.copy {
+  margin: 60px 0 0px 0;
+  margin-top: auto;
+  padding: 10px 0;
+  font-size: 2rem;
+  /* background-color: #999; */
 }
 
 main {
@@ -50,7 +59,7 @@ button, option, select {
 }
 
 label {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin: 0 1rem;
 }
 
@@ -69,7 +78,8 @@ p {
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
+  margin: 1rem;
 }
 
 h1 > a {
@@ -105,13 +115,17 @@ h1 button:hover {
   text-decoration: underline;
 }
 
+h2 {
+  font-size: 3rem;
+  color: orange;
+}
 nav {
   background-color: #999;
   font-size: 2rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 0 0 40px 0;
+  margin: 0 0 2rem 0;
 }
 
 nav a.brand {
@@ -128,6 +142,7 @@ nav a {
   color: var(--link-orange);
   text-decoration: none;
   font-size: 2.2rem;
+  text-shadow: #000 2px 2px 5px;
 }
 nav a:last-of-type {
   margin-left: auto;
@@ -146,6 +161,7 @@ nav a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 40px;
 }
 
 .card-container {
@@ -156,6 +172,7 @@ nav a:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-bottom: 40px;
 }
 
 .card {
@@ -223,6 +240,18 @@ nav a:hover {
   grid-area: button;
 }
 
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.search input {
+  margin: 0 0 2rem 0;
+}
+
 .bookcard {
   margin: 40px 0 0 40px;
   max-width: 500px;
@@ -230,15 +259,21 @@ nav a:hover {
   flex-direction: row;
 }
 
-.bookcard form {
+.bookcard form.addbook-form {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
 
+.bookcard form {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+}
+
 .bookcard-img {
   width: 200px;
-  height: 300px;
+  min-height: 300px;
   margin: 0;
   padding: 0;
   display: flex;
@@ -253,7 +288,7 @@ nav a:hover {
 }
 .bookcard-info {
   width: 300px;
-  height: 300px;
+  min-height: 300px;
   background: #ccc;
   display: flex;
   flex-direction: column;
@@ -261,6 +296,10 @@ nav a:hover {
   align-items: flex-start;
   padding: 20px;
   text-align: left;
+}
+
+.bookcard-info input[type=submit] {
+  margin-top: auto;
 }
 
 .bookcard-info p {
@@ -311,4 +350,60 @@ nav a:hover {
 
 .podcast-title a:hover{
   text-decoration: underline;
+}
+
+.pod-show-info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 60vw;
+}
+
+.pod-show-info p {
+  margin: 0 20px;
+  text-align: left;
+}
+
+.pod-show-info span {
+  color: orange;
+  font-weight: 700;
+}
+
+.pod-show-info img {
+  max-width: 160px;
+  max-height: 160px;
+}
+
+.pod-show-episodes {
+  display: flex;
+  flex-direction: row;
+}
+.pod-title {
+  margin: 0;
+}
+.pod-date {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+}
+.pod-desc {
+  width: 75%;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  text-align: left;
+  padding: 1rem;
+}
+
+.pod-authorlist {
+  padding: 1rem;
+  width: 20%;
+  margin-left: auto;
+  font-size: 2.2rem;
+  text-align: left;
+}
+.pod-authorlist span {
+  font-weight: 700;
+  font-size: 2.5rem;
 }
