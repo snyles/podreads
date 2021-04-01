@@ -61,6 +61,13 @@
   </div>
   <% }) %>
   </div>
+
+  <div class="results-pagination">
+      <% if (nextDate) { %>
+    <a href="/podcasts/<%= podcast.id %>?offset=<%= nextDate %>">Older Episodes</a>
+    <% } %>
+  </div>
+  
   <% } %>
 
 </div>
