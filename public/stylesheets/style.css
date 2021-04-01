@@ -353,12 +353,11 @@ nav a:hover {
 }
 
 .pod-show-info {
-  margin-top: 20px;
+  margin: 20px 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  max-width: 60vw;
 }
 
 .pod-show-info p {
@@ -372,15 +371,26 @@ nav a:hover {
 }
 
 .pod-show-info img {
-  max-width: 160px;
-  max-height: 160px;
+  
+  max-width: 300px;
+  max-height: 300px;
 }
 
-.pod-show-episodes {
+.pod-episode {
   display: flex;
-  flex-direction: row;
+  font-display: row;
+  border-top: solid 1px white;
+  margin: 1rem 0;
+  padding: 2rem 0 0 0;
+  width: 100%;
+
 }
-.pod-title {
+
+.pod-episode-info {
+  width: 75%;
+}
+
+.pod-episode-title {
   margin: 0;
 }
 .pod-date {
@@ -389,7 +399,6 @@ nav a:hover {
   font-size: 2rem;
 }
 .pod-desc {
-  width: 75%;
   font-size: 2rem;
   line-height: 2.5rem;
   text-align: left;
@@ -398,7 +407,7 @@ nav a:hover {
 
 .pod-authorlist {
   padding: 1rem;
-  width: 20%;
+  width: 30%;
   margin-left: auto;
   font-size: 2.2rem;
   text-align: left;
@@ -406,4 +415,8 @@ nav a:hover {
 .pod-authorlist span {
   font-weight: 700;
   font-size: 2.5rem;
+}
+
+.pod-authorlist a {
+  font-size: 2rem;
 }
