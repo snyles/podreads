@@ -1,11 +1,13 @@
 <%- include('../partials/header') %>
 
-<h2><%= booklist.name %></h2>
+<h1><%= booklist.name %></h1>
 <form action="/booklists/<%= booklist._id %>?_method=PUT" method="post">
   <label for="name">Booklist Name
-    <input type="text" name="name" placeholder="<%= booklist.name %>">
+    <input type="text" name="name" value="<%= booklist.name %>">
   </label>
-  <button type="submit">Change Name</button>
+  <p>
+    <button type="submit">Update Booklist</button>
+  </p>
 </form>
 
 

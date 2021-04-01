@@ -6,22 +6,25 @@
     <input type="text" name="intitle" value="<%= qTitle %>">
     <label for="inauthor">Author:</label>
     <input type="text" name="inauthor" value="<%= qAuthor %>">
-    <button type="submit" value="Search">Search</button>
+    <button type="submit" value="Search"><i class="fas fa-search"></i> Search</button>
   </form>
 
 
 <% if(results) { %>
 
-<div id="card-container">
+<div class="card-container">
 
 <% results.forEach(book => { %>
 
   <div class="bookcard">
       <form action="/books" method="post">
-      <% if (book.volumeInfo.imageLinks) { %>
+
       <div class="bookcard-img">
+      <% if (book.volumeInfo.imageLinks) { %>
         <img src="<%= book.volumeInfo.imageLinks.thumbnail %>">
         <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
+      <% } else { %>
+        <img src="https://picsum.photos/200/300" alt="No cover image, using placeholder image">
       <% } %>
       </div>
 
@@ -42,7 +45,7 @@
       <% } %>
 
       <% if (book.volumeInfo.description) { %>
-        <% let desc = book.volumeInfo.description.split(' ').slice(0,20).join(' ') + '...'; %>
+        <% let desc = book.volumeInfo.description.split(' ').slice(0,15).join(' ') + '...'; %>
         <p><span>Description:</span> <%= desc %> </p>
         <input type="text" hidden name="description" value="<%= desc %>">
       <% } %>

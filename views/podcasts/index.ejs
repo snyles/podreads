@@ -1,11 +1,15 @@
 <%- include('../partials/header') %>
 
 <% if (podcasts) { %>
+  <div class="card-container">
   <% podcasts.forEach(podcast => { %>
-    
-  <h2> <%= podcast.title %></h2>
-  <a href="/podcasts/<%= podcast.podcastId %>"><img src="<%= podcast.image %>" alt="<%= podcast.title %> "></a>    
+    <div class="podcast-card">
+      <div class="podcast-title"><a href="/podcasts/<%= podcast.podcastId %>"><%= podcast.title %></a></div>
+      <a href="/podcasts/<%= podcast.podcastId %>"><img src="<%= podcast.image %>" alt="<%= podcast.title %> "></a>    
+    </div>
   <% }) %>
-<% } %>
 
+
+</div>
+<% } %>
 <%- include('../partials/footer') %>
