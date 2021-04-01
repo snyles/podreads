@@ -328,6 +328,10 @@ nav i {
   flex-direction: column;
 }
 
+.readinglistSelect {
+  padding-top: 10px;
+}
+
 .bookcard-info select {
   width: 200px;
   margin: 0 auto;
@@ -357,17 +361,6 @@ nav i {
   height: 100%;
   width: 100%;
 }
-
-/* .my-podcast-card img {
-  max-width: 260px;
-  max-height: 260px;
-}
-
-.podcast-title a{
-  font-size: 2.5rem;
-  color: white;
-  text-decoration: none;
-} */
 
 .podcast-title a:hover{
   text-decoration: underline;
