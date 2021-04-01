@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<h1><%= booklist.name %>
+<h1>Booklist: <%= booklist.name %>
   <br>
   <a href="/booklists/<%= booklist._id %>/edit" class="edit">Edit Booklist</a>
   <form action="/booklists/<%= booklist._id %>?_method=DELETE" method=POST>

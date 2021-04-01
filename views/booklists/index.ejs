@@ -1,14 +1,16 @@
 <%- include('../partials/header') %>
 
+<h1>Booklists</h1>
 <form action="/booklists" method="POST">
   <input type="text" name="name" placeholder="Create New Booklist" required=true>
   <button type="submit">New Booklist</button>
 </form>
 
 <% booklists.forEach(booklist => { %>
-  <h1><a href="/booklists/<%= booklist._id %>">
+  <div class="booklist">
+  <h2><a href="/booklists/<%= booklist._id %>">
     <%= booklist.name %>
-  </a></h1>
+  </a></h2>
 
   <% if (booklist.books.length === 0) { %>
     <p>No books in this list yet, <a href="/books">Add books</a></p>
@@ -52,6 +54,7 @@
     <% }) %>
     </div>
   <% } %>
+</div>
 <% }) %>
 
 

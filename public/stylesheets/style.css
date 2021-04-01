@@ -48,7 +48,18 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  max-width: 40vw;
+  margin: 0 auto;
 }
+
+main h1 {
+  color: orange;
+  display: inline-block;
+  border-bottom: solid 1px white;
+}
+
+
 
 h1, h2, h3, .brand, nav a {
   font-family: 'Oswald';
@@ -118,6 +129,7 @@ h1 button:hover {
 h2 {
   font-size: 3rem;
   color: orange;
+  margin: 20px 0 0 0;
 }
 nav {
   background-color: #999;
@@ -171,7 +183,7 @@ nav i {
 }
 
 .card-container {
-  max-width: 80vw;
+  max-width: 90vw;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -256,6 +268,12 @@ nav i {
 }
 .search input {
   margin: 0 0 2rem 0;
+}
+
+.booklist {
+  width: 90%;
+  border-top: solid 1px white;
+  margin: 40px auto 0 auto;
 }
 
 .bookcard {
