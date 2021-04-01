@@ -4,8 +4,13 @@
 <% if (podcasts) { %>
   <div class="card-container">
   <% podcasts.forEach(podcast => { %>
-    <div class="my-podcast-card" style="background-image: url(<%= podcast.image %>)">
+    <div class="my-podcast-card">
       <a href="/podcasts/<%= podcast.podcastId %>">
+        <% if (podcast.image) { %>
+        <img src="<%= podcast.image %>" alt="<%= podcast.title %>"> 
+        <% } else { %>
+        <%= podcast.title %>
+        <% } %>
       </a>
     </div>
   <% }) %>

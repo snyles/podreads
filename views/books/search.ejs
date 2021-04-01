@@ -43,12 +43,12 @@
 
       <div class="bookcard-info">
       <% if (book.volumeInfo.title) { %>
-      <p><span>Title: </span> <%= book.volumeInfo.title %> </p>
+      <p class="title"><%= book.volumeInfo.title %> </p>
       <input type="text" hidden name="title" value="<%= book.volumeInfo.title %>">
       <% } %>
 
       <% if (book.volumeInfo.authors) { %>
-      <p><span>Author: </span><%= book.volumeInfo.authors.join(', ') %> </p>
+      <p>by <%= book.volumeInfo.authors.join(', ') %> </p>
       <input type="text" hidden name="author" value="<%= book.volumeInfo.authors.join(', ') %>">
       <% } %>
 

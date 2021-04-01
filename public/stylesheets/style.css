@@ -295,7 +295,7 @@ nav i {
 .bookcard-info {
   width: 300px;
   min-height: 300px;
-  background: #ccc;
+  background: #999;
   display: flex;
   flex-direction: column;
   justify-self: flex-start;
@@ -304,6 +304,8 @@ nav i {
   text-align: left;
 }
 
+
+
 .bookcard-info input[type=submit] {
   margin-top: auto;
 }
@@ -311,6 +313,12 @@ nav i {
 .bookcard-info p {
   margin: 5px 0;
   font-size: 1.6rem;
+}
+
+.bookcard-info p.title {
+  color: orange;
+  font-weight: 700;
+  font-size: 2rem;
 }
 
 .bookcard-info .readinglistSelect {
@@ -345,11 +353,11 @@ nav i {
   background-size: contain;
 }
 
-.my-podcast-card a {
-  display: block;
+.my-podcast-card img {
   height: 100%;
   width: 100%;
 }
+
 /* .my-podcast-card img {
   max-width: 260px;
   max-height: 260px;
