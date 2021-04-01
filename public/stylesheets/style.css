@@ -44,21 +44,40 @@ body {
   /* background-color: #999; */
 }
 
-main {
+main.splash {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
-  max-width: 40vw;
   margin: 0 auto;
+  background-image: url('/images/headphones_bg.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
-main h1 {
-  color: orange;
+main.splash h1 {
+  margin: 10vh 0 0 0;
+  font-size: 8rem;
+  color: #ffa500;
   display: inline-block;
   border-bottom: solid 1px white;
+  text-shadow: 0 0 5px #744b00;
 }
 
+main.splash p {
+  font-size: 3rem;
+  text-shadow: 2px 2px 5px black;
+  max-width: 600px;
+  font-weight: 900;
+}
+
+main.splash p > a {
+  text-shadow: 0 0 5px #744b00;
+}
 
 
 h1, h2, h3, .brand, nav a {
@@ -90,7 +109,7 @@ p {
 
 h1 {
   font-size: 4.5rem;
-  margin: 1rem;
+  margin: 2rem 0 1rem 0;
 }
 
 h1 > a {
@@ -137,7 +156,7 @@ nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 0 0 2rem 0;
+  margin: 0;
   height: 70px;
 }
 
