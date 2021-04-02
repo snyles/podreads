@@ -6,11 +6,9 @@ As a podcast listener, I often found myself forgetting the name of the guests on
 
 [Click here](https://snyles-podreads.herokuapp.com) to visit the app!
 
-## Screenshots
+## Planning
 
-![PodReads Screenshot 1](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot1.png)
-![PodReads Screenshot 2](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot2.png)
-![PodReads Screenshot 3](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot3.png)
+[Trello Board](https://trello.com/b/fmbTg8EL/podreads)
 
 ## Technologies Used
 
@@ -30,3 +28,8 @@ As a podcast listener, I often found myself forgetting the name of the guests on
 * Option to generate booklist for each podcast
 * Mark podcasts as listened to or books as read
   
+## Screenshots
+
+![PodReads Screenshot 1](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot1.png)
+![PodReads Screenshot 2](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot2.png)
+![PodReads Screenshot 3](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot3.png)
