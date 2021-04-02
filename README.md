@@ -27,6 +27,8 @@ As a podcast listener, I often found myself forgetting the name of the guests on
 * Browse podcasts by category, top rated
 * Option to generate booklist for each podcast
 * Mark podcasts as listened to or books as read
+* Share book recommendations with friends, social aspect
+* Improve accessibility
   
 ## Screenshots
 
