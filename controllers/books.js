@@ -31,7 +31,7 @@ function search(req, res) {
     const searchUrl=`https://www.googleapis.com/books/v1/volumes?startIndex=${offset}&q=`;
     axios.get(searchUrl+q)
     .then(response => {
-      // console.log(response.body);
+      // console.log(response.data);
       Booklist.find({ownerId: req.user._id })
       .then(booklists => { 
         res.render('books/search', {

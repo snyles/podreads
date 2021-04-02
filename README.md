@@ -8,4 +8,25 @@ As a podcast listener, I often found myself forgetting the name of the guests on
 
 ## Screenshots
 
-![PodReads Screenshot 1]()
+![PodReads Screenshot 1](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot1.png)
+![PodReads Screenshot 2](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot2.png)
+![PodReads Screenshot 3](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot3.png)
+
+## Technologies Used
+
+* Node 15.9
+* Express 4.16
+* MongoDB 4.4.4
+* Mongoose 5.12
+* EJS 2.6.1
+* Passport Oauth 2.0
+* HTML5
+* CSS3
+* Javascript ES6
+
+## Stretch Goals
+
+* Browse podcasts by category, top rated
+* Option to generate booklist for each podcast
+* Mark podcasts as listened to or books as read
+  
