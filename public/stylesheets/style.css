@@ -33,7 +33,9 @@ body {
   text-align: center;
 
    /* #f77f00; */
-   --link-orange: #faa307
+   --link-orange: #faa307;
+
+   background: linear-gradient(20deg, #333, #555)
 }
 
 .copy {
@@ -104,14 +106,17 @@ p {
   font-size: 2rem;
 }
 
+
 h1 {
   font-size: 4.5rem;
   margin: 2rem 0 1rem 0;
+  text-shadow: 2px 2px 5px black;
 }
 
 h1 > a {
   color: white;
   text-decoration: none;
+  text-shadow: none;
 }
 
 h1 > a:hover {
@@ -149,7 +154,7 @@ h2 {
 }
 nav {
   background-color: #999;
-  /* background: linear-gradient(#999, #ccc); */
+  /* background: linear-gradient(#666, #ccc); */
   font-size: 2rem;
   display: flex;
   justify-content: flex-start;
