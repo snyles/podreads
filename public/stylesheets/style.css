@@ -32,8 +32,10 @@ body {
   color: white;
   text-align: center;
 
-   /* #f77f00; */
-   --link-orange: #faa307;
+  /* #f77f00; */
+  --link-orange: #faa307;
+  /* --orange-primary: #ffa500; */
+  --orange-primary: #ffa216;
 
    background: linear-gradient(20deg, #333, #555)
 }
@@ -61,7 +63,7 @@ main.splash {
 main.splash h1 {
   margin: 10vh 0 0 0;
   font-size: 8rem;
-  color: #ffa500;
+  color: var(--orange-primary);
   display: inline-block;
   border-bottom: solid 1px white;
   text-shadow: 0 0 5px #744b00;
@@ -93,12 +95,12 @@ label {
 }
 
 a {
-  color: orange;
+  color: var(--orange-primary);
   text-decoration: none;
 }
 
 a:hover {
-  color: orange;
+  color: var(--orange-primary);
   text-decoration: underline;
 }
 
@@ -131,13 +133,13 @@ h1 > form {
 h1 > .edit {
   display: inline;
   font-size: 1.5rem;
-  color: orange;
+  color: var(--orange-primary);
   font-family: 'Montserrat';
 }
 
 h1 button {
   background: none;
-  color: orange;
+  color: var(--orange-primary);
   border: 0;
   font-weight: bold;
   font-family: 'Montserrat';
@@ -149,7 +151,7 @@ h1 button:hover {
 
 h2 {
   font-size: 3rem;
-  color: orange;
+  color: var(--orange-primary);
   margin: 20px 0 0 0;
 }
 nav {
@@ -172,7 +174,7 @@ nav a {
   padding: 0 15px;
   height: 100%;
   border-bottom: solid 5px #999;
-  color: var(--link-orange);
+  color: var(--orange-primary);
   text-decoration: none;
   font-size: 2.2rem;
   text-shadow: #000 2px 2px 5px;
@@ -180,6 +182,7 @@ nav a {
   justify-content: flex-end;
   align-items: center;
 }
+
 nav a:last-of-type {
   margin-left: auto;
 }
@@ -187,7 +190,7 @@ nav a:last-of-type {
 nav a:hover {
   text-decoration: none;
   background: #aaa;
-  border-bottom: solid 5px var(--link-orange);
+  border-bottom: solid 5px var(--orange-primary);
 }
 
 nav i {
@@ -262,11 +265,11 @@ nav i {
 
 .card p.title {
   font-size: 2rem;
-  color: orange;
+  color: var(--orange-primary);
 }
 
 .card p > span {
-  color: orange;
+  color: var(--orange-primary);
   font-weight: 700;
 }
 
@@ -358,7 +361,7 @@ nav i {
 }
 
 .bookcard-info p.title {
-  color: orange;
+  color: var(--orange-primary);
   font-weight: 700;
   font-size: 2rem;
 }
@@ -385,7 +388,7 @@ nav i {
 }
 
 .bookcard-info span {
-  color: orange;
+  color: var(--orange-primary);
 }
 
 .my-podcast-card {
@@ -428,7 +431,7 @@ nav i {
 }
 
 .pod-show-info span {
-  color: orange;
+  color: var(--orange-primary);
   font-weight: 700;
 }
 
@@ -497,14 +500,14 @@ nav i {
 
 @media only screen and (max-width: 860px) {
 
-nav {
-  flex-direction: column;
-  height: auto;
-}
+  nav {
+    flex-direction: column;
+    height: auto;
+  }
 
-.pod-show-info {
-  flex-direction: column;
-  align-items: center;
-}
+  .pod-show-info {
+    flex-direction: column;
+    align-items: center;
+  }
 
 }
