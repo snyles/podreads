@@ -6,6 +6,12 @@ As a podcast listener, I often found myself forgetting the name of the guests on
 
 [Click here](https://snyles-podreads.herokuapp.com) to visit the app!
 
+## Screenshots
+
+![PodReads Screenshot 1](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot1.png)
+![PodReads Screenshot 2](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot2.png)
+![PodReads Screenshot 3](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot3.png)
+
 ## Planning
 
 [Trello Board](https://trello.com/b/fmbTg8EL/podreads)
@@ -30,8 +36,3 @@ As a podcast listener, I often found myself forgetting the name of the guests on
 * Share book recommendations with friends, social aspect
 * Improve accessibility
   
-## Screenshots
-
-![PodReads Screenshot 1](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot1.png)
-![PodReads Screenshot 2](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot2.png)
-![PodReads Screenshot 3](https://raw.githubusercontent.com/snyles/podreads/main/public/images/PR-Screenshot3.png)

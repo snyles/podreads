@@ -16,7 +16,10 @@ function search(req,res) {
   if(q) {
     const options = {'X-ListenAPI-Key': process.env.API_KEY }
     const apiUrl = `https://listen-api.listennotes.com/api/v2/search?q=${q}&sort_by_date=0&type=podcast&offset=${offset}&only_in=title%2Cdescription&language=English&safe_mode=0`;
+
+
     unirest.get(apiUrl).header(options)
+    
     .then(response => {
       // console.log(response.body)
       res.render('podcasts/search', {

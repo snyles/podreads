@@ -13,9 +13,7 @@ module.exports = {
 
 function search(req, res) {
   let q = '';
-  console.log("req.query", req.query);
   if(Object.keys(req.query).length !== 0) {
-    console.log(req.query.intitle);
     if(req.query.intitle !== '') {
       q = req.query.intitle;
       if(req.query.inauthor) {
